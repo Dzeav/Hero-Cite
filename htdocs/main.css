@@ -1,0 +1,95 @@
+body {
+	background-color: #D1D1CF;
+}
+.creation {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: #D0DE5E;
+}
+.lounge {
+	padding: 15px;
+	width: 90%;
+	background-color: #33FF6E;
+	text-align: center;
+}
+#nav {
+  width: 20%;
+  float: left;
+}
+#nav ul {
+ 	list-style-type: none;
+ 	margin: 10px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;	
+	width: 100%;
+	float: left;
+  border-radius: 25px;
+}
+#nav li a {
+	display: block;
+	color: #FFFFFF;
+	text-align: center;
+	padding: 14px 0px;
+	text-decoration: none;
+}
+#roster{
+
+}
+#nav li a:hover {
+	background-color: #6F6F6F;;
+	color: #FFFFFF;
+}
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+  padding: 15px;
+}
+
+#top {
+	width: 92%;
+}
+.item_table {
+	padding: 15px;
+  width: 75%;
+  float: left;
+}
+.roster_set {
+  padding-left: 15px;
+  width 70%;
+  float: left;
+}
+#edit {
+  padding: 10px;
+}
+.sub_row {
+  border-style: none;
+}
+.team_name {
+  margin: 10px;
+}
+/*
+a.hype:link, a.hype:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+a.hype:hover, a.hype:hover {
+  background-color: red;
+}*/
+
+
+.hype {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 4px 12px 4px 12px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}

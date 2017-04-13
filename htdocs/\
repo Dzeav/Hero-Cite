@@ -1,0 +1,70 @@
+<?php
+  include 'utils.php';
+  $servername = "localhost";
+  $username = "daw1002_heros";
+  $password = "daw1002_heros";
+  $dbname = "daw1002_heros";
+  try{
+    $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $select = "SELECT * FROM team";
+    $newstmt = $db->prepare($select);
+    $newstmt->execute();
+    $output = "hold it right there";
+
+    $add_team = $db->prepare("INSERT INTO team(creator_user, name, location) VALUES( :creator_user, :name, :location )");
+    $add_team->bindParam( ':creator_user', $creator_user );
+    $add_team->bindParam( ':name', $team_name );
+    $add_team->bindParam( ':location', $team_location );
+    $creator_user = $_SESSION['userid'];
+    $team_name = $_POST['team_name'];
+    $team_location = $_POST['team_location'];
+    if( !empty(trim($creator_user)) && !empty(trim($team_name)) && 
+        !empty(trim($team_location)) ){
+        $add_team->execute();
+    }
+    foreach( $newstmt->fetchAll() as $row ){
+      $user = $_SESSION['userid'];
+      echo $row['creator_user'] . " Is the creator_user and " . $_SESSION['userid'] . "Is the user id";
+      if( $row['creator_user'] == $_SESSION['userid'] ){
+         $teamname = $row['name'];
+         $location = $row['location'];
+         $output = '<form method="post" action="team.php"><div><label>Add Hero: </label><input type="text" name="add_hero"/></div></form>';  
+         exit; 
+      }else{
+         $output = '<form method="post" action="team.php"><div class="team_name"><label>Team Name</label><div><input type="text" name = "team_name"/></div></div><div class="Location"><label>Location</label><div><input type="text" name="team_location"/></div></div><input type="submit" name="Submit"/></form>'; 
+      }
+    }
+    
+  }catch(PDOException $e){ echo "Error: " . $e->getMessage();}
+  
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="main.css"/>
+	<title>Home Page</title>
+</head>
+<body>
+<div class="lounge"><h1>Comic Lounge</h1></div>
+<div id="top">
+  <div id="nav"><ul>
+	  <li><a href="home.php">Home Page</a></li>
+  	<li><a href="team.php">Your Team</a></li>
+  	<li><a href="character.php">Characters</a></li>
+  	<li><a href="item.php">Items</a></li>
+  	<li><a href="logout.php">Extra</a></li>
+  	<li><a href="logout.php">Log Out</a></li>
+  </ul></div>
+  <div>
+    <h3>Roster</h3>
+    <p></p>
+  </div>
+  <div id="item_table">
+    <p><?php echo $output ?></p>
+  </div>
+</div>
+</body>
+</html>
+
