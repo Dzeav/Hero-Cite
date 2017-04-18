@@ -1,0 +1,5 @@
+//Create your mysql database and tables
+mysql -u username -p < your_filepath/htdocs/setup/setup.sql
+
+
+//Update the apache file, located at your_filepath/conf/apache_conf/apache.config 
