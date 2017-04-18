@@ -1,2 +1,1 @@
-# Hello-World
-First github repo 
+Hero Cite introduction
